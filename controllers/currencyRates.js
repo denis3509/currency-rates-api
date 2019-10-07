@@ -17,7 +17,7 @@ const convert = (req, res, next) => {
   try {
     exchangeResult = currencyRates.convert(amount, from, to)
   } catch (error) {
-    return next(createError(500, 'service are not available now'));
+    return next(createError(500, error.message ? error.message : 'service are not available now'));
   }
 
   res.send({exchangeResult});

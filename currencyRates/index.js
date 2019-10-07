@@ -68,6 +68,8 @@ const getCurrencyCodes = () => {
   throw new Error('service are not available now');
 };
 const convert = (amount, from, to) => {
+  amount = parseInt(amount,10);
+  if (isNaN(amount)) throw new Error('amount must be number');
   const {rates, status} = currencyRates;
   if (status === 'ON') {
     if (rates.hasOwnProperty(from) && rates.hasOwnProperty(to)) {
